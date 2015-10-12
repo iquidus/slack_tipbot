@@ -76,12 +76,6 @@ class Command
     @result[:icon_emoji] = @coin_config_module::WITHDRAW_ICON
   end
 
-  def networkinfo
-    info = client.getinfo
-    @result[:text] = info.to_s
-    @result[:icon_emoji] = @coin_config_module::NETWORKINFO_ICON
-  end
-
   private
 
   def set_amount
