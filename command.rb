@@ -51,16 +51,7 @@ class Command
     set_amount
 
     tx = client.sendfrom @user_id, user_address(target_user), @amount
-    @result[:text] = "#{@coin_config_module::TIP_PRETEXT} <@#{@user_id}> => <@#{target_user}> #{@amount}#{@coin_config_module::CURRENCY_ICON}"
-    @result[:attachments] = [{
-      color: "good",
-      fields: [{
-        title: "Nice! A #{@amount} Stratis tip!",
-        short: false
-      }]
-    }] 
-    
-    @result[:text] += " (<#{@coin_config_module::TIP_POSTTEXT1}#{tx}#{@coin_config_module::TIP_POSTTEXT2}>)"
+    @result[:text] = "#{@coin_config_module::TIP_PRETEXT} <@#{@user_id}> sent <@#{target_user}> #{@amount}#{@coin_config_module::CURRENCY_ICON}"
   end
 
   alias :":dogecoin:" :tip
@@ -80,7 +71,7 @@ class Command
     amount = @params.shift
     @amount = amount.to_i
     randomize_amount if (@amount == "random")
-    
+
     raise @coin_config_module::TOO_POOR_TEXT unless available_balance >= @amount + 0.1
     raise @coin_config_module::NO_PURPOSE_LOWER_BOUND_TEXT if @amount < @coin_config_module::NO_PURPOSE_LOWER_BOUND
   end
@@ -106,7 +97,7 @@ class Command
   end
 
   def commands
-    
+
     @result[:text] = "#{ACTIONS.join(', ' )}"
   end
 
