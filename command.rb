@@ -53,11 +53,9 @@ class Command
     tx = client.sendfrom @user_id, user_address(target_user), @amount
     @result[:text] = "#{@coin_config_module::TIP_PRETEXT} <@#{@user_id}> => <@#{target_user}> #{@amount}#{@coin_config_module::CURRENCY_ICON}"
     @result[:attachments] = [{
-      fallback:"<@#{@user_id}> tipped <@#{target_user}> #{@amount}JBS",
       color: "good",
       fields: [{
-        title: "wooo a #{@amount}JBS tip!",
-        value: "http://explorer.getjumbucks.com/tx/#{tx}",
+        title: "Nice! A #{@amount} Stratis tip!",
         short: false
       }]
     }] 
@@ -83,7 +81,7 @@ class Command
     @amount = amount.to_i
     randomize_amount if (@amount == "random")
     
-    raise @coin_config_module::TOO_POOR_TEXT unless available_balance >= @amount + 1
+    raise @coin_config_module::TOO_POOR_TEXT unless available_balance >= @amount + 0.1
     raise @coin_config_module::NO_PURPOSE_LOWER_BOUND_TEXT if @amount < @coin_config_module::NO_PURPOSE_LOWER_BOUND
   end
 
