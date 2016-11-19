@@ -1,5 +1,5 @@
 module Stratis
-  PERFORM_ERROR = 'That error doesn\'t exist'
+  PERFORM_ERROR = 'That command doesn\'t exist. valid commands: balance, deposit, tip, withdraw'
   BALANCE_REPLY_PRETEXT = 'Your balance: '
   CURRENCY_ICON = ' Stratis'
   WEALTHY_UPPER_BOUND = 100
@@ -15,8 +15,8 @@ module Stratis
   WITHDRAW_TEXT = 'Leaving so soon?'
   WITHDRAW_ICON = ':shit:'
   NETWORKINFO_ICON = ':bar_chart:'
-  TOO_POOR_TEXT = 'Too poor. Do not forget the tx fee (0.1)'
-  NO_PURPOSE_LOWER_BOUND_TEXT = 'Too small. No purpose'
+  TOO_POOR_TEXT = 'Insufficient funds. Do not forget the fee (0.0001)'
+  NO_PURPOSE_LOWER_BOUND_TEXT = 'Amount is less than 1 or missing or in the wrong order.'
   NO_PURPOSE_LOWER_BOUND = 0.00000001
   RANDOMIZED_EMOJI = ':black_joker:'
   NETWORK = 'stratis'
