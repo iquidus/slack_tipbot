@@ -28,12 +28,13 @@ class Command
   end
 
   def help
-    @result[:text] = "Tip - send someone coins
+    @result[:text] = "
+    Tip - send someone coins
     `odntip tip @somebody 100`
     Deposit - put coin in
     `odntip deposit`
     Withdraw - take coin out
-    `odntip withdraw LKzHM7rUB2sP1dgVskVFfdSoysnojuw2pX 100`
+    `odntip withdraw "your_personal_odn_address" 100`
     Balance - find out how much is in your wallet
     `odntip balance`"
   end
