@@ -123,7 +123,7 @@ For this example I'm using litecoin but the instructions should be similar for m
 
 #### Launch the server!
 
-* `RPC_USER=litecoinrpc RPC_PASSWORD=your_pass SLACK_API_TOKEN=your_api_key COIN=litecoin bundle exec ruby tipper.rb -p 4567`
+* `RPC_USER=odn RPC_PASSWORD=odnpass SLACK_API_TOKEN=GYUfwwEioTlB2rueDw8S2r9t COIN=obsidian bundle exec ruby tipper.rb -p 4567`
   
 ## Commands
 
