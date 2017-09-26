@@ -1,8 +1,8 @@
 module Obsidian
   PERFORM_ERROR = 'That error doesn\'t exist'
   BALANCE_REPLY_PRETEXT = 'Your balance: '
-  CURRENCY_ICON = 'Ł'
-  WEALTHY_UPPER_BOUND = 100
+  CURRENCY_ICON = ''
+  WEALTHY_UPPER_BOUND = 1000
   WEALTHY_UPPER_BOUND_POSTTEXT = ' very wealthy!'
   WEALTHY_UPPER_BOUND_EMOJI = ':moneybag:'
   BALANCE_REPLY_POSTTEXT = ' many odn'
@@ -10,14 +10,14 @@ module Obsidian
   DEPOSIT_POSTTEXT = 'this is your address'
   TIP_ERROR_TEXT = 'pls say tip @username amount'
   TIP_PRETEXT = 'So generous!'
-  TIP_POSTTEXT1 = 'http://block-explorer.com/tx/'
+  TIP_POSTTEXT1 = 'http://obsidianblockchain2.westeurope.cloudapp.azure.com/transaction/'
   TIP_POSTTEXT2 = '|blockchain'
-  WITHDRAW_TEXT = 'You\'re stingy'
-  WITHDRAW_ICON = ':shit:'
+  WITHDRAW_TEXT = 'Enjoy!'
+  WITHDRAW_ICON = ':flying_money:'
   NETWORKINFO_ICON = ':bar_chart:'
-  TOO_POOR_TEXT = 'Too poor. Sorry.'
-  NO_PURPOSE_LOWER_BOUND_TEXT = 'Too small. No purpose'
+  TOO_POOR_TEXT = 'Balance insufficient!'
+  NO_PURPOSE_LOWER_BOUND_TEXT = 'Min. Tip: 1 ODN'
   NO_PURPOSE_LOWER_BOUND = 0.00000001
-  RANDOMIZED_EMOJI = ':black_joker:'
+  RANDOMIZED_EMOJI = ':black_large_square:'
   NETWORK = 'obsidian'
 end
