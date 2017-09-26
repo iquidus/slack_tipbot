@@ -53,11 +53,11 @@ class Command
     tx = client.sendfrom @user_id, user_address(target_user), @amount
     @result[:text] = "#{@coin_config_module::TIP_PRETEXT} <@#{@user_id}> => <@#{target_user}> #{@amount}#{@coin_config_module::CURRENCY_ICON}"
     @result[:attachments] = [{
-      fallback:"<@#{@user_id}> tipped <@#{target_user}> #{@amount}JBS",
+      fallback:"<@#{@user_id}> tipped <@#{target_user}> #{@amount}ODN",
       color: "good",
       fields: [{
-        title: "wooo a #{@amount}JBS tip!",
-        value: "http://explorer.getjumbucks.com/tx/#{tx}",
+        title: "Wow a #{@amount}ODN tip!",
+        value: "http://obsidianblockchain2.westeurope.cloudapp.azure.com/transaction/#{tx}",
         short: false
       }]
     }] 
