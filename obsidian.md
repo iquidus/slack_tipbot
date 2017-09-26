@@ -107,23 +107,19 @@ For this example I'm using litecoin but the instructions should be similar for m
 
 * Tip - send someone coins
 
-  `litecointipper tip @somebody 100`
+  `odntip tip @somebody 100`
 
 * Deposit - put coin in
 
-  `litecointipper deposit`
+  `odntip deposit`
 
 * Withdraw - take coin out
 
-  `litecointipper withdraw LKzHM7rUB2sP1dgVskVFfdSoysnojuw2pX 100`
+  `odntip withdraw LKzHM7rUB2sP1dgVskVFfdSoysnojuw2pX 100`
 
 * Balance - find out how much is in your wallet
 
-  `litecointipper balance`
-
-* Networkinfo - Get the output of getinfo.  Note:  this will disclose the entire aggregate balance of the hot wallet to everyone in the chat
-
-  `litecointipper networkinfo`
+  `odntip balance`
 
 ## Tested coins
 
@@ -134,6 +130,7 @@ This has been tested w/
 * florincoin
 * doge
 * zeta
+* obsidian
 
 Please let me know when you try it with other coins so that I can update the list. 
 
