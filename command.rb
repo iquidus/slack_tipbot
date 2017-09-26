@@ -34,7 +34,7 @@ class Command
     Deposit - put coin in
     `odntip deposit`
     Withdraw - take coin out
-    `odntip withdraw "your_personal_odn_address" 100`
+    `odntip withdraw 'your_personal_odn_address' 100`
     Balance - find out how much is in your wallet
     `odntip balance`"
   end
