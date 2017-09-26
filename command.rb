@@ -3,7 +3,7 @@ Dir['./coin_config/*.rb'].each {|file| require file }
 require './bitcoin_client_extensions.rb'
 class Command
   attr_accessor :result, :action, :user_name, :icon_emoji
-  ACTIONS = %w(balance deposit tip withdraw networkinfo commands)
+  ACTIONS = %w(balance deposit tip withdraw commands help)
   def initialize(slack_params)
     @coin_config_module = Kernel.const_get ENV['COIN'].capitalize
     text = slack_params['text']
@@ -25,6 +25,17 @@ class Command
 
   def client
     @client ||= Bitcoin::Client.local
+  end
+
+  def help
+    @result[:text] = "Tip - send someone coins
+    `odntip tip @somebody 100`
+    Deposit - put coin in
+    `odntip deposit`
+    Withdraw - take coin out
+    `odntip withdraw LKzHM7rUB2sP1dgVskVFfdSoysnojuw2pX 100`
+    Balance - find out how much is in your wallet
+    `odntip balance`"
   end
 
   def balance
