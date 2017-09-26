@@ -1,5 +1,5 @@
 module Obsidian
-  PERFORM_ERROR = 'That error doesn\'t exist'
+  PERFORM_ERROR = 'Error'
   BALANCE_REPLY_PRETEXT = 'Your balance: '
   CURRENCY_ICON = ''
   WEALTHY_UPPER_BOUND = 1000
