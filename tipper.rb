@@ -1,8 +1,8 @@
 require 'sinatra'
 require "sinatra/json"
 require 'bitcoin-client'
-require './bitcoin_client_extensions.rb'
-require './command.rb'
+require './src/bitcoin_client_extensions.rb'
+require './src/command.rb'
 set :bind, '0.0.0.0'
 
 raise "Please set SLACK_API_TOKEN" if ENV['SLACK_API_TOKEN'].nil?

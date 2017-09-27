@@ -1,7 +1,7 @@
 module Obsidian
   PERFORM_ERROR = 'Error'
   BALANCE_REPLY_PRETEXT = 'Your balance: '
-  CURRENCY_ICON = ''
+  CURRENCY_ICON = ':odn-line:'
   WEALTHY_UPPER_BOUND = 1000
   WEALTHY_UPPER_BOUND_POSTTEXT = ' very wealthy!'
   WEALTHY_UPPER_BOUND_EMOJI = ':moneybag:'
