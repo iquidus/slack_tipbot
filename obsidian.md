@@ -1,3 +1,4 @@
+
 # Slack Tipbot
 
 #### coin-agnostic crypto Tipbot for [Slack](https://slack.com)
@@ -40,13 +41,10 @@ We're using [digitalocean.com](https://digitalocean.com) so these instructions w
   * `ns3.digitalocean.com`
 * In digitalocean's `DNS` section set an `A-Record` for your `hostname` from your previous step
   * Make the `hostname` be the name of your app
-    * `foocointipper`
+    * `odntip`
   * Make the IP address be the one provided by digitalocean for your droplet.
-* After the DNS propogates
-  * In the `Zone file` of the DNS section of digital ocean you'll see:
-    * `foocointipper	 IN A	143.143.243.143`
   * `ping foocointipper.example.com`
-    * `PING foocointipper.example.com (143.143.243.143): 56 data bytes`
+    * `PING odntip.example.com (143.143.243.143): 56 data bytes`
 
 #### SSH into your new virualized box
 
@@ -60,53 +58,33 @@ We're using [digitalocean.com](https://digitalocean.com) so these instructions w
 
 For this example I'm using litecoin but the instructions should be similar for most other coins.
 
-* Update and install dependencies
-  * `apt-get update && apt-get upgrade`
-  * `apt-get install ntp git build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev`
-  * `wget http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.8.tar.gz && tar -zxf download.php\?file\=miniupnpc-1.8.tar.gz && cd miniupnpc-1.8/`
-  * `make && make install && cd .. && rm -rf miniupnpc-1.8 download.php\?file\=miniupnpc-1.8.tar.gz`
 * Download the source code
-  * `git clone https://github.com/litecoin-project/litecoin`
-* Compile litecoind
-  * `cd litecoin/src`
-  * `make -f makefile.unix USE_UPNP=1 USE_QRCODE=1 USE_IPV6=1`
-  * `strip litecoind`
-* Add a user and move litecoind
-  * `adduser litecoin && usermod -g users litecoin && delgroup litecoin && chmod 0701 /home/litecoin`
-  * `mkdir /home/litecoin/bin`
-  * `cp ~/litecoin/src/litecoind /home/litecoin/bin/litecoind`
-  * `chown -R litecoin:users /home/litecoin/bin`
-  * `cd && rm -rf litecoin`
+  * `git clone https://github.com/obsidianproject/Obsidian-Qt.git`
 * Run the daemon
-  * `su litecoin`
-  * `cd && bin/litecoind`    
-  * On the first run, litecoind will return an error and tell you to make a configuration file, named litecoin.conf, in order to add a username and password to the file.
-    * `nano ~/.litecoin/litecoin.conf && chmod 0600 ~/.litecoin/litecoin.conf`
+  * `su obsidian`
+  * `cd Obsidian-Qt && obsidiand`    
+  * On the first run, obsidiand will return an error and tell you to make a configuration file, named obsidian.conf, in order to add a username and password to the file.
+    * `nano ~/.obsidian/obsidian.conf && chmod 0600 ~/.obsidian/obsidian.conf`
     * Add the following to your config file, changing the username and password
     * to something secure. Make sure to take note of the `rpcuser` and * `rpcpassword` because you'll need them in a couple of steps
       * `daemon=1`
-      * `rpcuser=litecoinrpc`
-      * `rpcpassword=f0000b4444r`
-      * `port=9333`
-      * `rpcport=8332`
+      * `staking=0`
+      * `enableaccounts=1`
+      * `rpcuser=odnrpc`
+      * `rpcpassword=odnpass`
+      * `rpcport=56661`
       * `rpcthreads=100`
       * `irc=0`
       * `dnsseed=1`
   * Run the daemon again
-    * `cd && bin/litecoind` 
+    * `obsidiand` 
   * To confirm that the daemon is running
-    * `cd && bin/litecoind getinfo`
+    * `obsidiand getinfo`
   * Now wait for the blockchain to sync
 
 #### Clone the CoinTipper Bot git repo
 
 * `git clone https://github.com/cgcardona/slack_tipbot.git`
-* Install bundler
-  * `apt-get install bundler`
-* Install Ruby 2.1.1 and rvm
-  * `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
-  * To start using RVM you need to run `source /usr/local/rvm/scripts/rvm`
-* Run `bundle`
 
 #### Set up the Slack integration: as an "outgoing webhook" 
 
@@ -123,29 +101,25 @@ For this example I'm using litecoin but the instructions should be similar for m
 
 #### Launch the server!
 
-* `RPC_USER=odn RPC_PASSWORD=odnpass SLACK_API_TOKEN=GYUfwwEioTlB2rueDw8S2r9t COIN=obsidian bundle exec ruby tipper.rb -p 4567`
+* `RPC_USER=odnrpc RPC_PASSWORD=odnpass SLACK_API_TOKEN=your_api_key COIN=obsidian bundle exec ruby tipper.rb -p 4567`
   
 ## Commands
 
 * Tip - send someone coins
 
-  `litecointipper tip @somebody 100`
+  `odntip tip @somebody 100`
 
 * Deposit - put coin in
 
-  `litecointipper deposit`
+  `odntip deposit`
 
 * Withdraw - take coin out
 
-  `litecointipper withdraw LKzHM7rUB2sP1dgVskVFfdSoysnojuw2pX 100`
+  `odntip withdraw LKzHM7rUB2sP1dgVskVFfdSoysnojuw2pX 100`
 
 * Balance - find out how much is in your wallet
 
-  `litecointipper balance`
-
-* Networkinfo - Get the output of getinfo.  Note:  this will disclose the entire aggregate balance of the hot wallet to everyone in the chat
-
-  `litecointipper networkinfo`
+  `odntip balance`
 
 ## Tested coins
 
@@ -156,6 +130,7 @@ This has been tested w/
 * florincoin
 * doge
 * zeta
+* obsidian
 
 Please let me know when you try it with other coins so that I can update the list. 
 

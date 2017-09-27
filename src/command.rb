@@ -3,7 +3,7 @@ Dir['./coin_config/*.rb'].each {|file| require file }
 require './bitcoin_client_extensions.rb'
 class Command
   attr_accessor :result, :action, :user_name, :icon_emoji
-  ACTIONS = %w(balance deposit tip withdraw networkinfo commands)
+  ACTIONS = %w(balance deposit tip withdraw commands help)
   def initialize(slack_params)
     @coin_config_module = Kernel.const_get ENV['COIN'].capitalize
     text = slack_params['text']
@@ -25,6 +25,18 @@ class Command
 
   def client
     @client ||= Bitcoin::Client.local
+  end
+
+  def help
+    @result[:text] = "
+    Tip - send someone coins
+    `odntip tip @somebody 100`
+    Deposit - put coin in
+    `odntip deposit`
+    Withdraw - take coin out
+    `odntip withdraw 'your_personal_odn_address' 100`
+    Balance - find out how much is in your wallet
+    `odntip balance`"
   end
 
   def balance
@@ -53,11 +65,11 @@ class Command
     tx = client.sendfrom @user_id, user_address(target_user), @amount
     @result[:text] = "#{@coin_config_module::TIP_PRETEXT} <@#{@user_id}> => <@#{target_user}> #{@amount}#{@coin_config_module::CURRENCY_ICON}"
     @result[:attachments] = [{
-      fallback:"<@#{@user_id}> tipped <@#{target_user}> #{@amount}JBS",
+      fallback:"<@#{@user_id}> tipped <@#{target_user}> #{@amount}ODN",
       color: "good",
       fields: [{
-        title: "wooo a #{@amount}JBS tip!",
-        value: "http://explorer.getjumbucks.com/tx/#{tx}",
+        title: "Wow a #{@amount}ODN tip!",
+        value: "http://obsidianblockchain2.westeurope.cloudapp.azure.com/transaction/#{tx}",
         short: false
       }]
     }] 
